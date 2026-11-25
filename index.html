@@ -21,7 +21,7 @@
    LAYOUT laptop: app left, Kai's inbox + mockup controls right; phone: app first */
 :root{color-scheme:light dark;
 --bg:light-dark(#f6e7d8,#1a1310);--card:light-dark(#fffdfa,#271d18);--ink:light-dark(#2b1d16,#f7ede5);--muted:light-dark(#7b6357,#c3b0a4);
---line:light-dark(#ecdccd,#3c2f28);--ginger:light-dark(#e57f35,#c96a26);--gdeep:light-dark(#b85a17,#f3a568);
+--line:light-dark(#ecdccd,#3c2f28);--ginger:light-dark(#d2681f,#c96a26);--onleaf:light-dark(#fff,#13261a);--gdeep:light-dark(#b85a17,#f3a568);
 --leaf:light-dark(#2f7d45,#82c993);--leafbg:light-dark(#e3f2e6,#1d3324);--water:light-dark(#2471b5,#86bdee);--waterbg:light-dark(#e3eef9,#1b2a3a);
 --kib:light-dark(#fbeadb,#3a2a20);--osk:light-dark(#2471b5,#86bdee);--mum:light-dark(#b8456f,#ee98b8);--warn:light-dark(#9a3d0c,#f6b483)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
@@ -44,7 +44,7 @@ img{max-width:100%}
 .av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font:600 17px Fredoka,sans-serif;color:#fff;flex:none}
 .hero .row{display:grid;grid-template-columns:minmax(0,1fr) 150px;align-items:end;gap:4px}
 .hero h2{font-size:40px;margin:12px 0 2px}
-.hero .date{font-weight:700;font-size:18px;opacity:.95}
+.hero .date{font-weight:800;font-size:19px}
 .ring{display:flex;align-items:center;gap:10px;margin:14px 0 18px}
 .ring b{font:600 22px Fredoka,sans-serif}
 .cat{width:150px;height:140px;display:block;overflow:visible}
@@ -81,7 +81,7 @@ img{max-width:100%}
 .doneline .undo{margin-left:auto;background:none;border:0;color:var(--muted);font-weight:800;min-height:44px;padding:0 4px;font-size:16px;text-decoration:underline}
 .pop{animation:pop .5s cubic-bezier(.2,1.7,.4,1)}
 @keyframes pop{from{transform:scale(.2) rotate(-30deg)}to{transform:scale(1) rotate(0)}}
-.yay{background:var(--leaf);color:#fff;border-radius:22px;padding:16px;margin:14px 0 4px;display:flex;gap:12px;align-items:center;animation:pop .6s cubic-bezier(.2,1.5,.4,1)}
+.yay{background:#2f7d45;color:#fff;border-radius:22px;padding:16px;margin:14px 0 4px;display:flex;gap:12px;align-items:center;animation:pop .6s cubic-bezier(.2,1.5,.4,1)}
 .yay svg{width:46px;height:46px;flex:none}
 .yay b{font:600 24px Fredoka,sans-serif;display:block}
 .yay span{font-size:17px;font-weight:700}
@@ -103,14 +103,17 @@ img{max-width:100%}
 .info h3{font-size:22px;margin:18px 0 8px}
 .rule{display:flex;gap:12px;align-items:center;border:2px solid var(--line);border-radius:18px;padding:12px;margin-bottom:10px;font-size:18px;font-weight:700}
 .rule img{width:60px;height:60px;border-radius:14px;object-fit:cover;flex:none}
-.rule .n{margin-left:auto;font:600 19px Fredoka,sans-serif;white-space:nowrap}
+.rule div{display:grid;gap:2px}.rule small{font-size:16px;color:var(--muted);font-weight:700}
 .strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .strip img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px}
 .scrim{position:absolute;inset:0;background:rgba(30,15,5,.5);display:flex;align-items:flex-end;z-index:5;animation:fade .2s}
 @keyframes fade{from{opacity:0}}
 .sheet{background:var(--card);width:100%;max-height:92%;overflow:auto;border-radius:28px 28px 0 0;padding:20px 16px 18px;animation:up .3s cubic-bezier(.2,1,.4,1)}
 @keyframes up{from{transform:translateY(60%)}}
-.sheet h3{font-size:30px;margin-bottom:12px}
+.sheet h3{font-size:30px;margin-bottom:12px;padding-right:56px}
+.x{position:absolute;top:14px;right:14px;width:48px;height:48px;border-radius:50%;border:0;background:var(--line);font:600 26px Fredoka,sans-serif;line-height:1}
+.sheet{position:relative}
+.stick{position:sticky;bottom:-18px;background:var(--card);padding:10px 0 18px;margin-bottom:-18px}
 .sheet .big{width:100%;border-radius:18px;display:block;aspect-ratio:4/3;object-fit:cover}
 .sheet .go{width:100%;margin-top:12px}
 .ghost{display:block;width:100%;min-height:56px;margin-top:10px;border-radius:16px;border:2px solid var(--line);background:none;font:600 19px Fredoka,sans-serif}
@@ -228,7 +231,7 @@ const I={
  lit:sv('<path d="M5 14h22l-2 12H7z" fill="currentColor" fill-opacity=".2"/><path d="M19 4l-5 12"/>'),
  tick:sv('<path d="M7 16.5l6 6L25 10" stroke-width="3.4"/>'),
  q:sv('<circle cx="16" cy="16" r="12"/><path d="M12.5 12.5a3.5 3.5 0 1 1 5 3.2c-1 .5-1.5 1.2-1.5 2.3M16 22.5v.1" stroke-width="2.8"/>'),
- check:'<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="currentColor"/><path d="M9 16.5l4.5 4.5L23 11" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ check:'<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="currentColor"/><path d="M9 16.5l4.5 4.5L23 11" fill="none" stroke="var(--onleaf)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
  home:sv('<path d="M5 15l11-9 11 9M8 13v13h16V13"/><path d="M13 26v-7h6v7"/>'),
  cal:sv('<rect x="4.5" y="7" width="23" height="20" rx="4"/><path d="M4.5 13h23M11 4v5M21 4v5"/>'),
  info:sv('<circle cx="16" cy="16" r="12"/><path d="M16 15v8M16 10v.1" stroke-width="3"/>'),
@@ -260,18 +263,22 @@ const CAT=`<svg class="cat${S.popped?' hop':''}" viewBox="0 0 160 150" aria-labe
 function ring(n,t){const r=24,c=2*Math.PI*r,f=t?n/t:0;return `<svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="${r}" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="7"/><circle cx="30" cy="30" r="${r}" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-dasharray="${c*f} ${c}" transform="rotate(-90 30 30)" style="transition:stroke-dasharray .6s"/><text x="30" y="36" text-anchor="middle" font-family="Fredoka" font-weight="600" font-size="17" fill="#fff">${n}/${t}</text></svg>`}
 
 const av=k=>`<span class="av" style="background:${P[k].c}">${P[k].name[0]}</span>`;
+const YAY='<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#fff"/><path d="M9 16.5l4.5 4.5L23 11" fill="none" stroke="#2f7d45" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const D=(iso,id)=>S.ticks[iso+'|'+id];
 const viewIso=()=>S.view||S.today;
 
 function setTicks(list){const m={};for(const t of list)m[t.date+'|'+t.task]={by:t.by,at:t.at};S.ticks=m}
+let inflight=0;
+const fetchT=(u,o={},ms=15000)=>{const c=new AbortController();const t=setTimeout(()=>c.abort(),ms);return fetch(u,{...o,signal:c.signal}).finally(()=>clearTimeout(t))};
 async function load(){
  if(API.indexOf('http')!==0){S.err='setup';render();return}
  try{
-  const r=await fetch(API,{cache:'no-store'});const j=await r.json();
+  const r=await fetchT(API,{cache:'no-store'});const j=await r.json();
   if(!j.ok)throw 0;
+  if(inflight)return;
   S.today=j.today||S.today;setTicks(j.ticks);S.loaded=true;S.err=false;
  }catch(e){S.err=true}
- if(!S.sheet&&!S.help)render();
+ if(!S.sheet&&!S.help&&!S.undo)render();
 }
 async function send(action,iso,id){
  const k=iso+'|'+id,before=S.ticks[k];
@@ -281,12 +288,15 @@ async function send(action,iso,id){
  }else delete S.ticks[k];
  render();
  try{
-  const r=await fetch(API,{method:'POST',body:JSON.stringify({action,date:iso,task:id,by:S.profile})});
+  inflight++;
+  const r=await fetchT(API,{method:'POST',body:JSON.stringify({action,date:iso,task:id,by:S.profile})},25000);
   const j=await r.json();if(!j.ok)throw 0;setTicks(j.ticks);S.today=j.today||S.today;
  }catch(e){
   if(before)S.ticks[k]=before;else delete S.ticks[k];
+  S.party=false;
   S.toast='Not saved. Check internet, then try again.';setTimeout(()=>{S.toast=null;render()},4500);
  }
+ inflight=Math.max(0,inflight-1);
  render();
 }
 
@@ -304,9 +314,9 @@ function today(){
  else if(S.err)h+=`<div class="banner err">No internet?<button data-retry>Try again</button></div>`;
  if(S.view)h+=`<button class="back" data-back>${I.back}Back to today</button>`;
  if(i<0)h+=`<div class="banner practice">Practice day. Kai is still home.</div>`;
- if(i>=TRIP_DAYS)return h+`<div class="yay">${I.check}<div><b>Kai is home!</b><span>Thank you so much.</span></div></div>`;
+ if(i>=TRIP_DAYS)return h+`<div class="yay">${YAY}<div><b>Kai is home!</b><span>Thank you so much.</span></div></div>`;
  if(!S.loaded&&!S.err)return h+`<p class="loading">Loading…</p>`;
- if(ts.length&&n===ts.length)h+=`<div class="yay">${I.check}<div><b>All done!</b><span>${S.view?'Finished this day.':'Thank you! Kai knows.'}</span></div></div>`;
+ if(ts.length&&n===ts.length)h+=`<div class="yay">${YAY}<div><b>All done!</b><span>${S.view?'Finished this day.':'Thank you! Kai knows.'}</span></div></div>`;
  for(const [s,l,ic] of [['am','Morning',I.sun],['any','Any time',I.any],['pm','Night',I.moon]]){const g=ts.filter(t=>t.slot===s);if(g.length)h+=`<p class="grp">${ic}${l}</p>`+g.map(t=>card(iso,t)).join('')}
  if(i===14)h+=`<p class="grp">${I.moon}Night</p><p class="empty">Kai is home. Thank you!</p>`;
  return h;
@@ -319,20 +329,21 @@ function sched(){
 function info(){
  return `<div class="info"><div class="strip" style="margin-top:12px"><img src="img/moma-peek.jpg" alt="MoMa"><img src="img/moma-door.jpg" alt="MoMa"><img src="img/moma-chin.jpg" alt="MoMa"></div>
  <h3>Rules</h3>
- <div class="rule"><img src="img/kibble-scoop.jpg" alt="">½ cup food<span class="n">2× a day</span></div>
- <div class="rule"><img src="img/moma-door.jpg" alt="">MoMa stays inside<span class="n">Balcony: watch her</span></div>
- <div class="rule"><img src="img/tap-off.jpg" alt="">Tap OFF after water<span class="n">Always</span></div>
+ <div class="rule"><img src="img/kibble-scoop.jpg" alt=""><div>½ cup food<small>Morning and night</small></div></div>
+ <div class="rule"><img src="img/moma-door.jpg" alt=""><div>MoMa stays inside<small>Balcony only if you watch her</small></div></div>
+ <div class="rule"><img src="img/tap-off.jpg" alt=""><div>Tap OFF after water<small>Every time</small></div></div>
  <h3>Help</h3>
  <div class="rule">Problem? Message Kai</div>
  <p class="empty" style="padding:0">Kai is back Fri 11 Dec, night.</p></div>`;
 }
 function helpSheet(id){
  const steps=HELP[kindOf(id)];
- return `<div class="scrim" data-close><div class="sheet" role="dialog" aria-label="How to"><h3>${TK[id].name}</h3>${steps.map(([f,c],n)=>`<div class="step"><span class="num">${n+1}</span><div><p>${c}</p>${f==='POTS'?`<div class="pots">${POTS.map(([pf,pc,tg])=>`<figure><img src="img/${pf}.jpg" alt=""><figcaption>${pc}<br>${TAG[tg]}</figcaption></figure>`).join('')}</div>`:f?`<img src="img/${f}.jpg" alt="">`:''}</div></div>`).join('')}<button class="go" data-close>OK</button></div></div>`;
+ return `<div class="scrim" data-close><div class="sheet" role="dialog" aria-label="How to"><h3>${TK[id].name}</h3>${steps.map(([f,c],n)=>`<div class="step"><span class="num">${n+1}</span><div><p>${c}</p>${f==='POTS'?`<div class="pots">${POTS.map(([pf,pc,tg])=>`<figure><img src="img/${pf}.jpg" alt=""><figcaption>${pc}<br>${TAG[tg]}</figcaption></figure>`).join('')}</div>`:f?`<img src="img/${f}.jpg" alt="">`:''}</div></div>`).join('')}<div class="stick"><button class="go" data-close>OK</button></div><button class="x" data-close aria-label="Close">×</button></div></div>`;
 }
 function render(){
  const app=document.getElementById('app');
  if(S.picker||!S.profile){
+  document.body.style.overflow='hidden';
   app.innerHTML=`<div class="welcome" role="dialog" aria-label="Who are you?">${CAT}<h3>Who are you?</h3><div class="pick">${['mum','oskar'].map(k=>`<button data-pick="${k}">${av(k)}${P[k].name}</button>`).join('')}</div></div>`;
   return;
  }
@@ -342,8 +353,11 @@ function render(){
  h+=`<nav class="tabs">${[['today','Today',I.home],['sched','Days',I.cal],['info','Info',I.info]].map(([k,l,ic])=>`<button data-tab="${k}" ${S.tab===k?'aria-current="page"':''}>${ic}${l}</button>`).join('')}</nav>`;
  if(S.help)h+=helpSheet(S.help);
  if(S.sheet)h+=`<div class="scrim" data-close><div class="sheet" role="dialog" aria-label="Tap off?"><h3>Tap OFF?</h3><img class="big" src="img/tap-off.jpg" alt="Tap off, handle across the pipe"><button class="go" data-yes>${I.tick}Yes, OFF</button><button class="ghost" data-close>Not yet</button></div></div>`;
+ if(S.undo)h+=`<div class="scrim" data-close><div class="sheet" role="dialog" aria-label="Undo?"><h3>Undo "${TK[S.undo].name}"?</h3><p style="font-size:19px;font-weight:700;margin:0 0 6px">It goes back to not done.</p><button class="go" data-undoyes>Yes, undo</button><button class="ghost" data-close>No, keep it</button></div></div>`;
  if(S.toast)h+=`<div class="toast" role="alert">${S.toast}</div>`;
  app.innerHTML=h;
+ document.body.style.overflow=(S.help||S.sheet||S.undo)?'hidden':'';
+ if(S.top){window.scrollTo(0,0);S.top=false}
  if(S.popped)hearts();
  if(S.party)party();
  S.popped=null;S.party=false;
@@ -362,20 +376,21 @@ document.addEventListener('click',e=>{
  if('do' in ds){if(ds.do==='out')S.sheet='out';else return send('tick',viewIso(),ds.do)}
  else if('yes' in ds){S.sheet=null;return send('tick',viewIso(),'out')}
  else if('help' in ds){S.help=ds.help}
- else if('undo' in ds){return send('undo',viewIso(),ds.undo)}
- else if('tab' in ds){S.tab=ds.tab;S.view=null}
- else if('day' in ds){S.view=ds.day===S.today?null:ds.day;S.tab='today'}
- else if('back' in ds){S.view=null}
+ else if('undo' in ds){S.undo=ds.undo}
+ else if('undoyes' in ds){const u=S.undo;S.undo=null;return send('undo',viewIso(),u)}
+ else if('tab' in ds){S.tab=ds.tab;S.view=null;S.top=true}
+ else if('day' in ds){S.view=ds.day===S.today?null:ds.day;S.tab='today';S.top=true}
+ else if('back' in ds){S.view=null;S.top=true}
  else if('switch' in ds){S.picker=true}
- else if('pick' in ds){S.profile=ds.pick;S.picker=false;S.tab='today';S.view=null}
+ else if('pick' in ds){S.profile=ds.pick;S.picker=false;S.tab='today';S.view=null;S.top=true}
  else if('retry' in ds){S.err=false;render();load();return}
- else if('close' in ds){if(e.target!==b&&!b.matches('button'))return;S.sheet=null;S.help=null}
+ else if('close' in ds){if(e.target!==b&&!b.matches('button'))return;S.sheet=null;S.help=null;S.undo=null}
  else return;
  render();
 });
-let hiddenAt=0;
+let hiddenAt=Date.now();
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){hiddenAt=Date.now();return}if(Date.now()-hiddenAt>120000){S.picker=true;S.sheet=null;S.help=null}load();render()});
-setInterval(()=>{if(document.visibilityState==='visible'&&!S.sheet&&!S.help)load()},60000);
+setInterval(()=>{if(document.visibilityState==='visible'&&!S.sheet&&!S.help&&!S.undo&&!S.picker)load()},60000);
 render();load();
 }
 </script>
