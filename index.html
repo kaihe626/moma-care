@@ -316,7 +316,7 @@ function today(){
  if(i<0)h+=`<div class="banner practice">Practice day. Kai is still home.</div>`;
  if(i>=TRIP_DAYS)return h+`<div class="yay">${YAY}<div><b>Kai is home!</b><span>Thank you so much.</span></div></div>`;
  if(!S.loaded&&!S.err)return h+`<p class="loading">Loading…</p>`;
- if(ts.length&&n===ts.length)h+=`<div class="yay">${YAY}<div><b>All done!</b><span>${S.view?'Finished this day.':'Thank you! Kai knows.'}</span></div></div>`;
+ if(ts.length&&n===ts.length)h+=`<div class="yay">${YAY}<div><b>All done!</b><span>${S.view?'Finished this day.':'Thank you!'}</span></div></div>`;
  for(const [s,l,ic] of [['am','Morning',I.sun],['any','Any time',I.any],['pm','Night',I.moon]]){const g=ts.filter(t=>t.slot===s);if(g.length)h+=`<p class="grp">${ic}${l}</p>`+g.map(t=>card(iso,t)).join('')}
  if(i===14)h+=`<p class="grp">${I.moon}Night</p><p class="empty">Kai is home. Thank you!</p>`;
  return h;
